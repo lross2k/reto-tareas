@@ -1,4 +1,4 @@
-// Calculos para Tarea Hunter A
+// Calculos para Tarea Hunter A de Turbomaquinas IS 2022
 // @author Luis Ross
 
 // Funciones usadas
@@ -6,10 +6,12 @@
 function y = interpLin(x, x0, x1, y0, y1);
     y = y0 + (y1 - y0)/(x1 - x0) * (x - x0);
 end;
+
 // Convertir de litros por segundo a galones por minuto
 function gpm = lpsAGpm(Lps);
 	gpm = Lps * 60.0/3.785;
 end;
+
 // Calculo de demanda en L/s a partir de unidades accesorio
 function caudalDemanda = demandaDeUA(ua, predom);
     if ua > 1200 then;
@@ -31,6 +33,13 @@ function caudalDemanda = demandaDeUA(ua, predom);
     end;
 end;
 
+// Leer argumentos para variar modo de trabajo
+if size(sciargs())(1) >= 4 then; // Busca argumento con cant de piezas
+    maxPiezas = strtod(sciargs()(4));
+else;
+    maxPiezas = 3;
+end;
+
 // Definicion de variables
 inodoro    = 26; // fluxometro
 lavatorio  = 26;
@@ -47,7 +56,7 @@ while tina>0
 	tina       = tina - 1;
 	lavatorio  = lavatorio - 1;
 	inodoro    = inodoro - 1;
-	//ducha      = ducha - 1;
+	ducha      = ducha - (maxPiezas == 4);
 end
 // Grupos de 3 piezas
 while ducha>0
@@ -113,9 +122,9 @@ disp("Seccion 3)");
 
 // Se vuelve a calcular el caudal total pero con valores agua caliente
 // los inodoros no requiere de agua caliente
-grupoBathValveHotUC = 8.0; // Bath group flush valve total
-lavatorioPubHotUC   = 2.0; // Se asume que es publico
-grifoHotUC          = 3.0;
+grupoBathValveHotUC = 3.0; // Bath group flush valve total
+lavatorioPubHotUC   = 1.5; // Se asume que es publico
+grifoHotUC          = 2.25;
 
 // Se suman las unidades de consume para todos los valores
 unidadesConsumoHot = grupoBathValveHotUC * gruposBath + ..
