@@ -8,8 +8,8 @@ function y = interpLin(x, x0, x1, y0, y1);
 end;
 
 // Convertir de litros por segundo a galones por minuto
-function gpm = lpsAGpm(Lps);
-	gpm = Lps * 60.0/3.785;
+function gpm = lpsAGpm(lps);
+	gpm = lps * 60.0/3.785;
 end;
 
 // Calculo de demanda en L/s a partir de unidades accesorio
@@ -41,7 +41,7 @@ else;
 end;
 
 // Definicion de variables
-inodoro    = 26; // fluxometro
+inodoro    = 26; // Fluxometro
 lavatorio  = 26;
 tina       = 8;
 ducha      = 18;
@@ -88,7 +88,7 @@ lavatorioPubTotalUC   = 2.0; // Se asume que es publico
 inodoroTotalUC        = 2.0; // Bidet
 grifoTotalUC          = 3.0;
 
-// Se suman las unidades de consume para todos los valores
+// Se suman las unidades de consumo para todos los valores
 unidadesConsumoTotales = grupoBathValveTotalUC * gruposBath + ..
                          lavatorioPubTotalUC * lavatorio    + ..
                          inodoroTotalUC * inodoro           + ..
