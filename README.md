@@ -8,8 +8,10 @@ de este repositorio
 
 ## Lenguajes usados
 - Scilab
+- K&R C
 
 ## Próximos lenguajes
-- K&R C
 - COBOL
 - Lisp
+- HolyC
+- Java
