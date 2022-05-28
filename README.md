@@ -9,9 +9,9 @@ de este repositorio
 ## Lenguajes usados
 - Scilab
 - K&R C
+- COBOL
 
 ## Próximos lenguajes
-- COBOL
 - Lisp
 - HolyC
 - Java
